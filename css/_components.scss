@@ -1,0 +1,385 @@
+.hero__button-container{
+    /*buttons*/
+    :nth-child(1){
+        @extend %buttons;
+        background-color: #000;
+        color: #eee;
+        margin-right: 20px;
+        transition: all .3s;
+        @include breakpoint2{
+            width: 100px;
+            margin-right: 10px;
+        }
+        @include Mobile-L{
+            background-color: #040404;
+            color: #faf7f7;
+        }
+    }
+
+
+    :nth-child(1):hover{
+        background-color: #9c1010;
+        color: #ece9e9;
+        border: 1px solid #ece9e9;
+        transition: all .3s;
+        @include Mobile-L{
+            border: 1px solid #9c1010;
+            background-color: #ece9e9;
+            color: #bb1717;
+        }
+
+    }
+
+    :nth-child(2){
+        @extend %buttons;
+        background: none;
+        border: 1px solid #FCF6F5;
+        transition: all .3s;
+        color: #FCF6F5;
+        @include breakpoint2{
+            width: 100px;
+        }
+        @include Mobile-L{
+            border: 1px solid #c01212;
+            color: #b31010;
+        }
+    }
+
+    :nth-child(2):hover{
+    background-color: #000;
+    color: #eee;
+    border: none;
+    transition: all .3s;
+    @include Mobile-L{
+        background-color: #000000;
+        color: #f4e9e9;
+        border: none;
+    }
+
+    }
+
+
+    @include Mobile-L{
+
+        :nth-child(1):not(:active){
+            background-color: #000;
+            color: #eee;
+            margin-right: 20px;
+            transition: all .3s;
+            @include breakpoint2{
+                width: 100px;
+                margin-right: 10px;
+            }
+            @include Mobile-L{
+                background-color: #040404;
+                color: #faf7f7;
+            }
+        }
+
+        :nth-child(2):not(:active){
+            background: none;
+            border: 1px solid #FCF6F5;
+            transition: all .3s;
+            color: #FCF6F5;
+            @include breakpoint2{
+                width: 100px;
+            }
+            @include Mobile-L{
+                border: 1px solid #c01212;
+                color: #b31010;
+            }
+
+        }
+
+    }
+
+    
+}
+
+
+
+//gallery slider
+.about__img-gallery{
+    padding: 90px 0;
+    display: flex;
+    overflow-x:hidden ;
+   
+    gap: 4vw;
+    position: absolute;
+    transform: translate(-100%, 0%);
+    left: 50%;
+    opacity: 1;
+    transition: all 1s;
+
+    @include Pref-reduced-motion{
+        transition: none;
+    }
+
+    .about__img{
+        width: 30vmin;
+        height: 40vmin;
+        object-fit: cover;
+        object-position: 100% center;
+        transition: all .3s;
+    }
+
+    .about__img:hover{
+        transform: scale(1.1);
+        transition: all .5s;
+    }
+}
+
+.show-img{
+    opacity: 1;
+    transform: translate(0%,0%);
+    overflow-x: hidden;
+}     
+
+
+//Footer carousel
+.contact{
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: 1.1fr 2fr;
+    grid-auto-rows: 1fr;
+    width: 100%;
+    height: fit-content;
+    padding-bottom: 50px;
+
+
+    @include breakpoint{
+        grid-template-columns: 1fr 1.3fr;
+    }
+
+    @include breakpoint2{
+        grid-template-columns: 1fr 1.1fr;
+    }
+
+    @include Mobile-L{
+        grid-template-columns: 1fr;
+        grid-template-rows: .2fr 1fr;
+        
+    }
+  
+   
+
+    
+
+    .contact__form{
+        background-color: #121517;
+        color: #eee;
+        padding: 30px 80px;
+
+        @include breakpoint{
+           padding: 30px 60px;
+        }
+
+        @include breakpoint2{
+            padding: 30px 30px;
+        }
+
+        @include Mobile-S{
+            padding: 30px 15px;
+        }
+        h1{
+            margin: 0 auto;
+            color: #f4f2f2;
+            width: fit-content;
+            margin-bottom: 15px;
+        }
+        form{
+
+            input[type=submit]{
+                margin-top: 30px;
+                width: 100%;
+                height: 50px;
+                font-weight: bold;
+                font-size: 15px;
+                background-color: #930011;
+                border: none;
+                cursor: pointer;
+                color:#FCF6F5 ;
+            }
+
+            .contact__box{
+                position: relative;
+                width: 100%;
+                margin: 10px 0;
+
+
+                input[type="email"],input[type="tel"]{
+                    width: 100%;
+                    @extend %form;
+                  
+                  
+                }
+
+                textarea{
+                    @extend %form;
+                    height: 200px;
+                    width: 100%;
+                    resize: none;
+                    padding: 5px 13px;
+                    padding-top: 30px;
+                    
+                }
+           
+                label{
+                    position: absolute;
+                    color: #636262;
+                    top: 22px;
+                    left: 42px;
+                    font-size: 15px;
+                    transition: .5s;
+    
+                }
+
+                ion-icon{
+                    position: absolute;
+                    top: 19px;
+                    left: 10px;
+                    color: #af3443;
+                    width: 22px;
+                    height: 22px;
+                   
+                    fill: #8c8c8c;
+                }
+                input::placeholder {
+                    color: transparent;
+                  }
+                
+            }
+
+            .contact__text{
+                label{
+                    left: 15px;
+                }
+
+                textarea::placeholder{
+                    color: transparent;
+                }
+            }
+
+            .contact__box input:focus ~ label,
+            .contact__box input:not(:placeholder-shown) ~ label,
+            .contact__box textarea:focus ~ label,
+            .contact__box textarea:not(:placeholder-shown) ~ label{
+            
+                font-size: 12px;
+                top: 10px;
+                
+            }
+
+            .contact__box input:focus,
+            .contact__box textarea:focus {
+                border: 3px solid #930011; 
+                outline: none;/* Customize the focus ring style */
+              }
+
+
+            .contact__names{
+                display: flex;
+                gap: 10px;
+                width: 100%;
+
+                input[type="text"]{
+                    width: 100%;
+                    @extend %form;
+
+                }
+            }
+           
+        }
+    }
+
+}
+
+
+.contact__img-container{
+    position: relative;
+    
+    
+
+      .contact__track-container{
+          position: relative;
+          height: 600px;
+          overflow: hidden;
+          width: 100%;
+          color: #eee;
+          @include Mobile-L{
+              height: 520px;
+          }
+          ul{
+              list-style: none;
+             
+              
+              .contact__slide{
+                  display: none;
+                  
+                
+                  img{
+                      height: 600px;
+                      width: 100%;
+                      object-fit:cover;
+                      object-position: center;
+                      opacity: 0.5;
+
+
+                      @include Mobile-L{
+                          height: 100%;
+                          width: 100%;
+                          object-fit: contain;
+                          height: 520px;
+                      }
+                      
+                  }
+
+              }
+              .contact__slide::before{
+                  content: "";
+                  position: absolute;
+                  width: 100%;
+                  height: 100%;
+                  background-color: rgb(0, 0, 0);
+
+              }
+
+              .contact__slide-visible{
+                  display: block;
+                  transition: all .2s;
+              }
+          }
+      }
+
+      .contact__nav{
+          display: flex;
+          height: fit-content;
+          position: absolute;
+          z-index: 10;
+          top: 93%;
+          justify-content: center;
+          width: 100%;
+        
+          
+          .contact__indicator{
+              cursor: pointer;
+              
+              height: 14px;
+              width: 14px;
+              border: none;
+              border-radius: 50%;
+              margin: 0 4px;
+              background-color: #f3f3f3;
+
+          }
+
+          .contact__current{
+              transition: ease-in .2s;
+              width: 30px;
+              border-radius: 25px;
+              background-color: #000000;
+              
+          }
+      }
+  
+  }
